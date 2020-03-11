@@ -1,0 +1,51 @@
+<div class="container">
+  <h2>O1Eへようこそ!</h2>
+  <p>新規登録(無料)して利用を開始しましょう。</p>
+  <%= form_with model: @user, local: true do |f| %>
+    <div class="form-group">
+      <%= f.label :name %>
+      <%= f.text_field :name,
+        class: "form-control #{'is-invalid' if @user.errors.messages[:name].any?}",
+        autofocus: true,
+        autocomplete: "name" %>
+      <% @user.errors.messages[:name].each do |error| %>
+        <div class="invalid-feedback"><%= "メールアドレス#{error}" %></div>
+      <% end %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :email %>
+      <%= f.text_field :email,
+        class: "form-control #{'is-invalid' if @user.errors.messages[:email].any?}",
+        autofocus: true,
+        autocomplete: "email" %>
+      <% @user.errors.messages[:email].each do |error| %>
+        <div class="invalid-feedback"><%= "メールアドレス#{error}" %></div>
+      <% end %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :password %>
+      <%= f.password_field :password,
+        class: "form-control #{'is-invalid' if @user.errors.messages[:password].any?}",
+        autocomplete: "new-password" %>
+      <% @user.errors.messages[:password].each do |error| %>
+        <div class="invalid-feedback"><%= "パスワード#{error}" %></div>
+      <% end %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :password_confirmation %>
+      <%= f.password_field :password_confirmation,
+        class: "form-control #{'is-invalid' if @user.errors.messages[:password_confirmation].any?}",
+        autocomplete: "new-password" %>
+      <% @user.errors.messages[:password_confirmation].each do |error| %>
+        <div class="invalid-feedback"><%= "確認用パスワード#{error}" %></div>
+      <% end %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "無料で新規登録", class: 'btn btn-light' %>
+    </div>
+  <% end %>
+</div>
