@@ -17,7 +17,7 @@ class SessionsController < ApplicationController
         flash[:success] = 'ログインに成功しました'
         redirect_back_or user_url(@user.name)
       else
-        flash[:warning] = '無効なURLです'
+        flash[:warning] = 'ログインに失敗しました'
         redirect_to root_url
       end
     else
