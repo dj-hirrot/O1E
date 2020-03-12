@@ -22,4 +22,11 @@ Rails.application.routes.draw do
   ### Root
   ###
   root to: 'home#index'
+
+  ###
+  ### LetterOpener
+  ###
+  if Rails.env.development?
+    mount LetterOpenerWeb::Engine, at: "/letter_opener"
+  end
 end
