@@ -1,1 +1,20 @@
 @import '~bootstrap/scss/bootstrap';
+
+.footer
+{
+  margin: 30px 0 0 0;
+  font-size: 0.8rem;
+  width: 100%;
+  border-top: solid 1px #EAECEF;
+  ul.footer-items
+  {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    li
+    {
+      float: left;
+      padding: 30px 10px;
+    }
+  }
+}
