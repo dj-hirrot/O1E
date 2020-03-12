@@ -21,6 +21,7 @@ class SessionsController < ApplicationController
         redirect_to root_url
       end
     else
+      @user = User.new # ログイン失敗したら初期化
       flash.now[:danger] =  'メールアドレスかパスワードが間違っています'
       render :new
     end
