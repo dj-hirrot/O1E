@@ -25,16 +25,26 @@ class User < ApplicationRecord
     update_attribute(:remember_digest, User.digest(remember_token))
   end
 
+  ### ユーザーの有効化
+  def activate
+    update(activated: true, activated_at: Time.zone.now)
+  end
+
   ### パラメータのトークンとダイジェストが一致するか
   def authenticated?(attr, token)
     digest = send("#{attr}_digest")
     return false if digest.nil?
-    Bcrypt::Password.new(digest).is_password?(token)
+    BCrypt::Password.new(digest).is_password?(token)
   end
 
   ### ログイン情報の破棄
   def forget
     update_attribute(:remember_digest, nil)
+  end
+
+  # 有効化用のメールを送信する
+  def send_activation_email
+    UserMailer.account_activation(self).deliver_now
   end
 
   ### 文字列をダイジェスト化する

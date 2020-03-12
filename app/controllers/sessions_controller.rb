@@ -11,10 +11,15 @@ class SessionsController < ApplicationController
     @user = User.find_by(email: params[:session][:email].downcase)
 
     if @user && @user.authenticate(params[:session][:password])
-      login @user
-      params[:session][:remember_me] == '1' ? remember(@user) : forget(@user)
-      flash[:success] = 'ログインに成功しました'
-      redirect_back_or user_url(@user.name)
+      if @user.activated?
+        login @user
+        params[:session][:remember_me] == '1' ? remember(@user) : forget(@user)
+        flash[:success] = 'ログインに成功しました'
+        redirect_back_or user_url(@user.name)
+      else
+        flash[:warning] = '無効なURLです'
+        redirect_to root_url
+      end
     else
       flash.now[:danger] =  'メールアドレスかパスワードが間違っています'
       render :new
