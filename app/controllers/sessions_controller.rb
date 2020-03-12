@@ -1,6 +1,10 @@
 class SessionsController < ApplicationController
   def new
-    @user = User.new
+    if signed_in?
+      redirect_to root_url
+    else
+      @user = User.new
+    end
   end
 
   def create
@@ -8,7 +12,7 @@ class SessionsController < ApplicationController
 
     if @user && @user.authenticate(params[:session][:password])
       login @user
-      remember @user
+      params[:session][:remember_me] == '1' ? remember(@user) : forget(@user)
       flash[:success] = 'ログインに成功しました'
       redirect_to root_url
     else
