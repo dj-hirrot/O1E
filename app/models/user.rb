@@ -26,9 +26,10 @@ class User < ApplicationRecord
   end
 
   ### パラメータのトークンとダイジェストが一致するか
-  def authenticated?(remember_token)
-    return false if remember_digest.nil?
-    Bcrypt::Password.new(remember_digest).is_password?(remember_token)
+  def authenticated?(attr, token)
+    digest = send("#{attr}_digest")
+    return false if digest.nil?
+    Bcrypt::Password.new(digest).is_password?(token)
   end
 
   ### ログイン情報の破棄
