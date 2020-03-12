@@ -9,7 +9,7 @@
         autofocus: true,
         autocomplete: "name" %>
       <% @user.errors.messages[:name].each do |error| %>
-        <div class="invalid-feedback"><%= "メールアドレス#{error}" %></div>
+        <div class="invalid-feedback"><%= "ユーザー名#{error}" %></div>
       <% end %>
     </div>
 
