@@ -27,4 +27,6 @@ Rails.application.routes.draw do
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
   end
+
+  get '*path', controller: 'errors', action: 'render_404'
 end
