@@ -1,0 +1,24 @@
+<tr>
+  <th scope="row"><%= user.id %></th>
+  <td><%= user.name %></td>
+  <td><%= user.email %></td>
+  <td>
+    <% case user.role_level %>
+    <% when 'general' %>
+      <span class="badge badge-light">一般</span>
+    <% when 'viewer' %>
+      <span class="badge badge-info">閲覧者</span>
+    <% when 'admin' %>
+      <span class="badge badge-warning">管理者</span>
+    <% when 'superadmin' %>
+      <span class="badge badge-danger">Hiroto Shibutani</span>
+    <% end %>
+  </td>
+  <td>
+    <% if user.activated? %>
+      <span class="badge badge-success">確認済み</span>
+    <% else %>
+      <span class="badge badge-warning">未確認</span>
+    <% end %>
+  </td>
+</tr>

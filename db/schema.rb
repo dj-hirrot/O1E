@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 2020_03_12_144445) do
     t.string "activation_digest"
     t.boolean "activated", default: false
     t.string "reset_digest"
+    t.integer "role_level", default: 0
     t.datetime "activated_at"
     t.datetime "reset_sent_at"
     t.datetime "created_at", precision: 6, null: false

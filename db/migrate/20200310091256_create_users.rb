@@ -9,6 +9,8 @@ class CreateUsers < ActiveRecord::Migration[6.0]
       t.boolean :activated, default: false
       t.string :reset_digest
 
+      t.integer :role_level, default: 0
+
       t.datetime :activated_at
       t.datetime :reset_sent_at
       t.timestamps
