@@ -16,6 +16,11 @@
           <%= link_to 'カテゴリ', admin_categories_path, class: 'nav-link' %>
         </li>
       </ul>
+      <ul class="navbar-nav float-right">
+        <li class="nav-item text-white">
+          <b><%= current_user.role_level %></b>
+        </li>
+      </ul>
     </div>
   </nav>
 </header>

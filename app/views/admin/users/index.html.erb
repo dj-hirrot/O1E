@@ -11,6 +11,10 @@
         <th scope="col">メールアドレス</th>
         <th scope="col">権限レベル</th>
         <th scope="col">確認状況</th>
+        <% if superadmin? %>
+          <th></th>
+          <th></th>
+        <% end %>
       </tr>
     </thead>
     <tbody>

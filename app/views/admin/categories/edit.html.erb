@@ -1,0 +1,19 @@
+<div class="container">
+  <h2>「<%= @category.name %>」編集</h2>
+  <%= form_with model: @category, url: admin_category_path(@category), local: true do |f| %>
+    <div class="form-group">
+      <%= f.label :name %>
+      <%= f.text_field :name,
+        class: "form-control #{'is-invalid' if @category.errors.messages[:name].any?}",
+        autofocus: true,
+        autocomplete: "name" %>
+      <% @category.errors.messages[:name].each do |error| %>
+        <div class="invalid-feedback"><%= "カテゴリ名#{error}" %></div>
+      <% end %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "更新", class: 'btn btn-dark' %>
+    </div>
+  <% end %>
+</div>

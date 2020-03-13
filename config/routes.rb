@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   ###
   namespace :admin do
     resources :categories, only: [:index, :new, :create, :edit, :update, :destroy]
-    resources :users, only: [:index]
+    resources :users, only: [:index, :edit, :update, :destroy]
 
     root to: 'home#index'
   end
