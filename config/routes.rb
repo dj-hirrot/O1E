@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  namespace :admin do
+    get 'home/index'
+  end
   ###
   ### ADMIN
   ###
@@ -6,7 +9,11 @@ Rails.application.routes.draw do
     ###
     ### Roles
     ###
-    resources :role, only: [:index]
+    resources :roles, only: [:index]
+    ###
+    ### Root
+    ###
+    root to: 'home#index'
   end
 
   ###

@@ -1,0 +1,18 @@
+<header>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <%= link_to admin_root_path, class: 'navbar-brand' do %>
+      <%= image_tag 'admin/header-logo.png' %>
+    <% end %>
+    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#Navber" aria-controls="Navber" aria-expanded="false" aria-label="ナビゲーションの切替">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="Navber">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <%= link_to '権限', admin_roles_path, class: 'nav-link' %>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</header>
