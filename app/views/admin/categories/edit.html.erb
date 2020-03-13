@@ -2,6 +2,17 @@
   <h2>「<%= @category.name %>」編集</h2>
   <%= form_with model: @category, url: admin_category_path(@category), local: true do |f| %>
     <div class="form-group">
+      <%= f.label :code %>
+      <%= f.text_field :code,
+        class: "form-control #{'is-invalid' if @category.errors.messages[:code].any?}",
+        autofocus: true,
+        autocomplete: "code" %>
+      <% @category.errors.messages[:code].each do |error| %>
+        <div class="invalid-feedback"><%= "カテゴリコード#{error}" %></div>
+      <% end %>
+    </div>
+
+    <div class="form-group">
       <%= f.label :name %>
       <%= f.text_field :name,
         class: "form-control #{'is-invalid' if @category.errors.messages[:name].any?}",

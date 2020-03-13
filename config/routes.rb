@@ -9,6 +9,8 @@ Rails.application.routes.draw do
     root to: 'home#index'
   end
 
+  resources :categories, only: [:show], param: :name
+
   get '/login', to: 'sessions#new', as: 'login'
   post '/login', to: 'sessions#create', as: 'logins'
   delete '/logout', to: 'sessions#destroy', as: 'logout'

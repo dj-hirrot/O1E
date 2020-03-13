@@ -19,6 +19,16 @@
               <%= link_to '設定', edit_user_path(current_user.name), class: 'dropdown-item' %>
             </div>
           </li>
+          <li class="nav-item dropdown">
+            <a href="#" class="nav-link dropdown-toggle" id="navbar-dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              カテゴリ
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbar-dropdown">
+              <% @categories.each do |category| %>
+                <%= link_to category.name, category_path(category.name), class: 'dropdown-item' %>
+              <% end %>
+            </div>
+          </li>
           <li class="nav-item">
             <%= link_to 'ログアウト', logout_path, method: :delete, class: 'nav-link' %>
           </li>
