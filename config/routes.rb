@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   ### ADMIN
   ###
   namespace :admin do
+    resources :categories, only: [:index, :new, :create, :edit, :update, :destroy]
     resources :users, only: [:index]
 
     root to: 'home#index'
