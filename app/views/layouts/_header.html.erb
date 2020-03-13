@@ -10,18 +10,23 @@
     <div class="collapse navbar-collapse" id="Navber">
       <ul class="navbar-nav mr-auto">
         <% if signed_in? %>
-        <li class="nav-item dropdown">
-          <a href="#" class="nav-link dropdown-toggle" id="navbar-dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <%= current_user.name.upcase %>
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbar-dropdown">
-            <%= link_to 'プロフィール', user_path(current_user.name), class: 'dropdown-item' %>
-            <%= link_to '設定', edit_user_path(current_user.name), class: 'dropdown-item' %>
-          </div>
-        </li>
+          <li class="nav-item dropdown">
+            <a href="#" class="nav-link dropdown-toggle" id="navbar-dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <%= current_user.name.upcase %>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbar-dropdown">
+              <%= link_to 'プロフィール', user_path(current_user.name), class: 'dropdown-item' %>
+              <%= link_to '設定', edit_user_path(current_user.name), class: 'dropdown-item' %>
+            </div>
+          </li>
           <li class="nav-item">
             <%= link_to 'ログアウト', logout_path, method: :delete, class: 'nav-link' %>
           </li>
+          <% if admin_user %>
+            <li class="nav-item">
+              <%= link_to '管理画面', admin_root_path, class: 'nav-link' %>
+            </li>
+          <% end %>
         <% else %>
           <li class="nav-item">
             <%= link_to '新規登録', join_path, class: 'nav-link' %>

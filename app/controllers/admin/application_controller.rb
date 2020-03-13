@@ -7,7 +7,7 @@ class Admin::ApplicationController < ActionController::Base
   layout 'admin/application'
 
   def admin?
-    if invalid_user
+    if !signed_in? || !admin_user
       raise ActionController::RoutingError.new(params[:path])
     end
   end
