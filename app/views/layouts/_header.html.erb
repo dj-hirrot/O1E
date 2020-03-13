@@ -24,8 +24,8 @@
               カテゴリ
             </a>
             <div class="dropdown-menu" aria-labelledby="navbar-dropdown">
-              <% @categories.each do |category| %>
-                <%= link_to category.name, category_path(category.name), class: 'dropdown-item' %>
+              <% Category.all.each do |category| %>
+                <%= link_to category.name, category_path(category.code), class: 'dropdown-item' %>
               <% end %>
             </div>
           </li>
