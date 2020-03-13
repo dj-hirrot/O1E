@@ -2,25 +2,25 @@ include SessionsHelper
 module Admin::SessionsHelper
   def general?
     if current_user
-      current_user.role_level > 0
+      current_user.role_level_before_type_cast > 0
     end
   end
 
   def viewer?
     if current_user
-      current_user.role_level > 1
+      current_user.role_level_before_type_cast > 1
     end
   end
 
   def admin?
     if current_user
-      current_user.role_level > 2
+      current_user.role_level_before_type_cast > 2
     end
   end
 
   def superadmin?
     if current_user
-      current_user.role_level > 3
+      current_user.role_level_before_type_cast > 3
     end
   end
 end
