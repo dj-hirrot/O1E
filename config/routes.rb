@@ -1,5 +1,15 @@
 Rails.application.routes.draw do
   ###
+  ### ADMIN
+  ###
+  namespace :admin do
+    ###
+    ### Roles
+    ###
+    resources :role, only: [:index]
+  end
+
+  ###
   ### Sessions
   ###
   get '/login', to: 'sessions#new', as: 'login'
