@@ -3,7 +3,6 @@ class CreateCategories < ActiveRecord::Migration[6.0]
     create_table :categories do |t|
       t.string :code
       t.string :name
-      t.integer :progress, default: 0
 
       t.timestamps
 
