@@ -10,16 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_13_071939) do
+ActiveRecord::Schema.define(version: 2020_03_14_093013) do
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "code"
     t.string "name"
-    t.integer "progress", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["code"], name: "index_categories_on_code", unique: true
     t.index ["name"], name: "index_categories_on_name", unique: true
+  end
+
+  create_table "subjects", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "category_id", null: false
+    t.string "name"
+    t.integer "progress", default: 0
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["category_id"], name: "index_subjects_on_category_id"
+    t.index ["user_id"], name: "index_subjects_on_user_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -39,4 +49,6 @@ ActiveRecord::Schema.define(version: 2020_03_13_071939) do
     t.index ["name"], name: "index_users_on_name", unique: true
   end
 
+  add_foreign_key "subjects", "categories"
+  add_foreign_key "subjects", "users"
 end
