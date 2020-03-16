@@ -3,6 +3,8 @@ class SubjectsController < ApplicationController
 
   def new
     @subject = @category.subjects.build
+    @subject.user_id = current_user.id
+    render partial: 'form'
   end
 
   private
