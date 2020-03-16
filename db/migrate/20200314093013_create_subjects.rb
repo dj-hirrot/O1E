@@ -4,6 +4,7 @@ class CreateSubjects < ActiveRecord::Migration[6.0]
       t.references :user, null: false, foreign_key: true
       t.references :category, null: false, foreign_key: true
       t.string :name
+      t.text :description
       t.integer :progress, default: 0
 
       t.timestamps

@@ -15,6 +15,7 @@ ActiveRecord::Schema.define(version: 2020_03_14_093013) do
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "code"
     t.string "name"
+    t.text "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["code"], name: "index_categories_on_code", unique: true
@@ -25,6 +26,7 @@ ActiveRecord::Schema.define(version: 2020_03_14_093013) do
     t.bigint "user_id", null: false
     t.bigint "category_id", null: false
     t.string "name"
+    t.text "description"
     t.integer "progress", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
