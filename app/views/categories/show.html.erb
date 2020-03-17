@@ -2,9 +2,6 @@
   <div class="jumbotron">
     <h1><%= @category.name %></h1>
     <p><%= @category.description %></p>
-    <%= link_to '科目を追加する', new_category_subject_path(@category.code), remote: true, class: 'btn btn-light' %>
+    <%= link_to '科目を追加する', new_category_subject_path(@category.code), class: 'btn btn-light' %>
   </div>
-</div>
-
-<div class="modal fade" id="form-modal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="form-modal-label" aria-hidden="true">
 </div>
