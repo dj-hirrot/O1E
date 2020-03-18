@@ -2,6 +2,17 @@
   <div class="jumbotron">
     <h1><%= @category.name %></h1>
     <p><%= @category.description %></p>
-    <%= link_to '科目を追加する', new_category_subject_path(@category.code), class: 'btn btn-light' %>
+    <%= form_with(model: @subject, url: category_subjects_path(@category.code), remote: true) do |f| %>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <%= f.text_field :name, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <%= f.submit '科目を追加する', class: 'btn btn-light' %>
+        </div>
+      </div>
+    <% end %>
   </div>
 </div>
