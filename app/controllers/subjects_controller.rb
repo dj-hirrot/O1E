@@ -1,14 +1,17 @@
 class SubjectsController < ApplicationController
   before_action :set_category
 
+  def index
+    @subjects = @category.subjects.order(created_at: :desc)
+    render partial: 'subjects'
+  end
+
   def create
     @subject = @category.subjects.build(user_id: current_user.id)
 
     if @subject.update(subject_params)
       render json: { subject: @subject }, status: 200
     else
-      # response.headers['CategoryCode'] = params[:category_code]
-
       render json: { subject: @subject.errors.full_messages }, status: 422
     end
   end

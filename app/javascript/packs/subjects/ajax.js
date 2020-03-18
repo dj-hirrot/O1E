@@ -1,7 +1,9 @@
 $(function() {
-  $("form").on("ajax:success", function(event) {
-    var data, status, xhr;
-    [data, status, xhr] = event.detail;
+  reloadSubjectsTable();
+
+  $("#new_subject_form").on("ajax:success", function(event) {
+    $(this).find('input').val('');
+    reloadSubjectsTable();
   }).on("ajax:error", function(event) {
     var data, status, xhr;
     var list_items = $('#errors_modal_items').empty();
@@ -14,14 +16,16 @@ $(function() {
     $('#errors_modal').modal('show');
   });
 
-  // function reloadSubjectsTable() {
-  //   $.ajax('get.php', { type: 'get' })
-  //     .done(function(data) {
-  //       var table = $('#subjects_table').empty();
-  //       table.append(data);
-  //     })
-  //     .fail(function() {
-  //       window.alert('科目の読み込みに失敗しました。');
-  //     });
-  // }
+  function reloadSubjectsTable() {
+    var code = location.pathname.split('/')[2];
+    $.ajax('/categories/'+code+'/subjects', { type: 'get' })
+    .done(function(data) {
+      console.log(data);
+      var table = $('#subjects_table').empty();
+      table.append(data);
+    })
+    .fail(function() {
+      window.alert('科目の読み込みに失敗しました。');
+    });
+  }
 });

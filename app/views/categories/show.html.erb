@@ -2,7 +2,7 @@
   <div class="jumbotron">
     <h1><%= @category.name %></h1>
     <p><%= @category.description %></p>
-    <%= form_with(model: @subject, url: category_subjects_path(@category.code), remote: true) do |f| %>
+    <%= form_with(model: @subject, url: category_subjects_path(@category.code), id: 'new_subject_form', remote: true) do |f| %>
       <div class="row">
         <div class="col-md-6">
           <div class="form-group">
@@ -23,7 +23,6 @@
       </tr>
     </thead>
     <tbody id="subjects_table">
-      <%= render @subjects %>
     </tbody>
   </table>
 </div>
