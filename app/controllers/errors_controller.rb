@@ -1,4 +1,6 @@
 class ErrorsController < ActionController::Base
+  skip_before_action :authenticate_user?
+
   def error
     rescue_from Exception, with: :render_500
     rescue_from ActiveRecord::RecordNotFound, with: :render_404

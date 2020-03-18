@@ -1,8 +1,17 @@
 class ApplicationController < ActionController::Base
   include SessionsHelper
+  before_action :authenticate_user?
+
   rescue_from Exception, with: :render_500
   rescue_from ActiveRecord::RecordNotFound, with: :render_404
   rescue_from ActionController::RoutingError, with: :render_404
+
+  def authenticate_user?
+    unless signed_in?
+      store_location
+      raise ActionController::RoutingError.new(params[:path])
+    end
+  end
 
   private
     def render_404(exception = nil)

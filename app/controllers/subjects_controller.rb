@@ -7,7 +7,9 @@ class SubjectsController < ApplicationController
     if @subject.update(subject_params)
       render json: { subject: @subject }, status: 200
     else
-      render json: { subject: @subject }, status: 422
+      # response.headers['CategoryCode'] = params[:category_code]
+
+      render json: { subject: @subject.errors.full_messages }, status: 422
     end
   end
 
