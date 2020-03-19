@@ -1,6 +1,13 @@
 <% @subjects.each do |subject| %>
   <tr>
-    <td><%= subject.name %></td>
+    <td><%= link_to subject.name, root_path %></td>
     <td><%= subject.description.try(:truncate, 10) %></td>
+    <td>
+      <div class="progress">
+        <div class="progress-bar w-<%= subject.progress %>" style="width:<%= subject.progress %>%;" role="progressbar" aria-valuenow="<%= subject.progress %>" aria-valuemin="0" aria-valuemax="100"></div>
+      </div>
+    </td>
+    <td><%= link_to '更新', root_path, class: 'btn btn-light' %></td>
+    <td><%= link_to '削除', root_path, class: 'btn btn-light' %></td>
   </tr>
 <% end %>

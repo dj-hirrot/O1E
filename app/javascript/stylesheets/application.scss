@@ -1,5 +1,14 @@
 @import '~bootstrap/scss/bootstrap';
 
+form
+{
+  textarea.limit-height
+  {
+    min-height: 100px;
+    max-height: 500px;
+  }
+}
+
 .footer
 {
   margin: 30px 0 0 0;
