@@ -2,7 +2,7 @@ class SubjectsController < ApplicationController
   before_action :set_category
 
   def index
-    @subjects = @category.subjects.order(created_at: :desc)
+    @subjects = @category.subjects.where(user_id: current_user.id).order(created_at: :desc)
     render partial: 'subjects'
   end
 
