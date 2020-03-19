@@ -6,7 +6,7 @@ $(document).on('turbolinks:load', function() {
     reloadSubjectsTable();
 
     $("#new_subject_form").on("ajax:success", function(event) {
-      $(this).find('input').val('');
+      $(this).find('input, textarea').val('');
       reloadSubjectsTable();
     }).on("ajax:error", function(event) {
       var data, status, xhr;
