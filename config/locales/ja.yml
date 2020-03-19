@@ -15,8 +15,10 @@ ja:
         updated_at: 更新日
       category:
         name: カテゴリー名
+        description: 説明文
       subject:
         name: 科目名
+        description: 説明文
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'
