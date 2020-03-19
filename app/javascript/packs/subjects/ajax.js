@@ -1,6 +1,8 @@
 $(document).on('turbolinks:load', function() {
   var target_path = /^(\/categories\/)[a-z]+$/gi;
-  if (location.pathname === location.pathname.match(target_path)[0]) {
+  var regex_path = location.pathname.match(target_path);
+
+  if (regex_path && regex_path.includes(location.pathname)) {
     reloadSubjectsTable();
 
     $("#new_subject_form").on("ajax:success", function(event) {
