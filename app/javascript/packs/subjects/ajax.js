@@ -20,6 +20,35 @@ $(document).on('turbolinks:load', function() {
       $('#errors_modal').modal('show');
     });
 
+    $(document).on("ajax:success", "#edit_subject_form", function(event) {
+      $('#edit_modal').modal('hide');
+      reloadSubjectsTable();
+    }).on("ajax:error", function(event) {
+      var data, status, xhr;
+      var list_items = $('#update_errors').empty();
+      [data, status, xhr] = event.detail;
+
+      $('#update_errors').append('<ul id="update_error_items"></ul>');
+      $.each(data.errors, function(index, value) {
+        $('#update_error_items').append('<li class="text-danger">'+value+'</li>');
+      });
+    });
+
+    $(document).on("click", ".subject_edit_btn", function() {
+      var code = location.pathname.split('/')[2];
+      var id = $(this).data('subject-id');
+
+      $.ajax('/categories/'+code+'/subjects/'+id+'/edit', { type: 'get' })
+      .done(function(data) {
+        var modal = $('#edit_modal').empty();
+        modal.append(data);
+        modal.modal('show');
+      })
+      .fail(function() {
+        window.alert('科目の読み込みに失敗しました。');
+      });
+    });
+
     function reloadSubjectsTable() {
       var code = location.pathname.split('/')[2];
       $.ajax('/categories/'+code+'/subjects', { type: 'get' })

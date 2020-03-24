@@ -1,0 +1,28 @@
+<div id="edit_modal_content" class="modal-dialog" role="document">
+  <div class="modal-content">
+    <%= form_with(model: @subject, url: category_subject_path(@category.code, @subject.id), id: 'edit_subject_form') do |f| %>
+      <div class="modal-header bg-light">
+        <h5 class="modal-title" id="edit_modal_title"><%= @subject.name %></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="閉じる">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div id="update_errors">
+        </div>
+        <div class="form-group">
+          <%= f.label :name %>
+          <%= f.text_field :name, class: 'form-control' %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :description %>
+          <%= f.text_area :description, class: 'form-control limit-height' %>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <%= f.submit '変更を保存', class: 'btn btn-light' %>
+      </div>
+    <% end %>
+  </div>
+</div>
