@@ -1,6 +1,6 @@
 class SubjectsController < ApplicationController
   before_action :set_category
-  before_action :set_subject, only: [:edit, :update, :destroy]
+  before_action :set_subject, only: [:show, :edit, :update, :destroy]
 
   def index
     if request.xhr?
@@ -9,6 +9,9 @@ class SubjectsController < ApplicationController
     else
       raise ActionController::RoutingError.new(params[:path])
     end
+  end
+
+  def show
   end
 
   def create

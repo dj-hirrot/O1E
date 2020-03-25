@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   end
 
   resources :categories, only: [:show], param: :code do
-    resources :subjects, only: [:index, :create, :edit, :update, :destroy]
+    resources :subjects, only: [:index, :show, :create, :edit, :update, :destroy]
   end
 
   get '/login', to: 'sessions#new', as: 'login'
