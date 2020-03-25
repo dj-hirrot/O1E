@@ -25,8 +25,8 @@
 
     <div class="form-group">
       <%= f.label :description %>
-      <%= f.text_field :description,
-        class: "form-control #{'is-invalid' if @category.errors.messages[:description].any?}",
+      <%= f.text_area :description,
+        class: "form-control limit-height #{'is-invalid' if @category.errors.messages[:description].any?}",
         autofocus: true,
         autocomplete: "description" %>
       <% @category.errors.messages[:description].each do |error| %>
@@ -36,6 +36,7 @@
 
     <div class="actions">
       <%= f.submit "登録", class: 'btn btn-dark' %>
+      <%= link_to '戻る', admin_categories_path, class: 'btn btn-light' %>
     </div>
   <% end %>
 </div>
