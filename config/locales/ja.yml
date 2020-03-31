@@ -19,6 +19,10 @@ ja:
       subject:
         name: 科目名
         description: 説明文
+      task:
+        name: タスク名
+        description: 説明文
+        done: 完了
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'
