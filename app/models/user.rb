@@ -3,6 +3,9 @@ class User < ApplicationRecord
 
   enum role_level: { general: 0, viewer: 1, admin: 2, superadmin: 3 }
 
+  has_many :subjects
+  has_many :tasks
+
   before_save :downcase_attributes
   before_create :create_activation_token
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_14_093013) do
+ActiveRecord::Schema.define(version: 2020_03_31_145018) do
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "code"
@@ -34,6 +34,17 @@ ActiveRecord::Schema.define(version: 2020_03_14_093013) do
     t.index ["user_id"], name: "index_subjects_on_user_id"
   end
 
+  create_table "tasks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "subject_id", null: false
+    t.bigint "user_id", null: false
+    t.string "name"
+    t.boolean "done"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["subject_id"], name: "index_tasks_on_subject_id"
+    t.index ["user_id"], name: "index_tasks_on_user_id"
+  end
+
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.string "email"
@@ -53,4 +64,6 @@ ActiveRecord::Schema.define(version: 2020_03_14_093013) do
 
   add_foreign_key "subjects", "categories"
   add_foreign_key "subjects", "users"
+  add_foreign_key "tasks", "subjects"
+  add_foreign_key "tasks", "users"
 end
