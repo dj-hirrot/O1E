@@ -1,0 +1,9 @@
+<% @tasks.each do |task| %>
+  <tr>
+    <td><%= task.name %></td>
+    <td><%= task.description.try(:truncate, 10) %></td>
+    <td><%= task.done? ? 'o' : 'x' %></td>
+    <td><%= button_tag '更新', data: { task_id: task.id }, class: 'task_edit_btn btn btn-light', type: 'button' %></td>
+    <td><%= link_to '削除', category_subject_task_path(@category.code, @subject, task), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'btn btn-light' %></td>
+  </tr>
+<% end %>

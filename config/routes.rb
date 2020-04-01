@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
   resources :categories, only: [:show], param: :code do
     resources :subjects, only: [:index, :show, :create, :edit, :update, :destroy] do
-      resources :tasks, only: [:create]
+      resources :tasks, only: [:index, :create, :edit, :update, :destroy]
     end
   end
 
