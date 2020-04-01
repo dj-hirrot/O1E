@@ -2,7 +2,7 @@
   <div class="jumbotron">
     <h1><%= @subject.name %></h1>
     <p><%= @subject.description %></p>
-    <%= form_with model: @task, url: category_subject_tasks_path(@category.code, @subject), remote:true do |f| %>
+    <%= form_with(model: @task, url: category_subject_tasks_path(@category.code, @subject), scope: 'task', remote:true) do |f| %>
       <div class="row">
         <div class="col-md-8">
           <div class="form-group row">
