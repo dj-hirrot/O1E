@@ -2,8 +2,6 @@ $(document).on('turbolinks:load', function() {
   var target_path = /^\/categories\/[a-z]+\/subjects\/[0-9a-z]+$/gi;
   var regex_path = location.pathname.match(target_path);
 
-  console.log(regex_path);
-
   if (regex_path && regex_path.includes(location.pathname)) {
     reloadTasksTable();
 
