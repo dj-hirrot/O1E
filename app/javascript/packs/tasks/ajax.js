@@ -13,7 +13,7 @@ $(document).on('turbolinks:load', function() {
       var list_items = $('#errors_modal_items').empty();
       [data, status, xhr] = event.detail;
 
-      $.each(data.subject, function(index, value) {
+      $.each(data.task, function(index, value) {
         $('#errors_modal_items').append('<li>'+value+'</li>');
       });
 
