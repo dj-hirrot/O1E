@@ -50,6 +50,22 @@ $(document).on('turbolinks:load', function() {
       });
     });
 
+    $(document).on('change', '#done_check_box', function() {
+      console.log('changed');
+      $form = $(this).parents('form:first');
+      $.ajax({
+        url : $form.attr('action'), //Formのアクションを取得して指定する
+        type: $form.attr('method'),//Formのメソッドを取得して指定する
+        data: $form.serialize()
+      })
+      .done(function(data) {
+        reloadTasksTable();
+      })
+      .fail(function() {
+        window.alert('タスクの更新に失敗しました。');
+      });
+    });
+
     function reloadTasksTable() {
       var code = location.pathname.split('/')[2];
       var id = location.pathname.split('/')[4];

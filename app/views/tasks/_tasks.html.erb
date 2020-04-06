@@ -1,8 +1,24 @@
 <% @tasks.each do |task| %>
   <tr>
-    <td><%= task.name %></td>
-    <td><%= task.description.try(:truncate, 10) %></td>
-    <td><%= task.done? ? 'o' : 'x' %></td>
+    <td>
+      <% if task.done %>
+        <s class="text-muted"><%= task.name %></s>
+      <% else %>
+        <%= task.name %>
+      <% end %>
+    </td>
+    <td>
+      <% if task.done %>
+        <s class="text-muted"><%= task.description.try(:truncate, 10) %></s>
+      <% else %>
+        <%= task.description.try(:truncate, 10) %>
+      <% end %>
+    </td>
+    <td>
+      <%= form_with(model: task, url: category_subject_task_path(@category.code, @subject, task), scope: 'task', remote:true, id: :done_form) do |f| %>
+        <%= f.check_box :done, id: :done_check_box %>
+      <% end %>
+    </td>
     <td><%= button_tag '更新', data: { task_id: task.id }, class: 'task_edit_btn btn btn-light', type: 'button' %></td>
     <td><%= link_to '削除', category_subject_task_path(@category.code, @subject, task), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'btn btn-light' %></td>
   </tr>
