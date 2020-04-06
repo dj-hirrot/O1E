@@ -54,8 +54,8 @@ $(document).on('turbolinks:load', function() {
       console.log('changed');
       $form = $(this).parents('form:first');
       $.ajax({
-        url : $form.attr('action'), //Formのアクションを取得して指定する
-        type: $form.attr('method'),//Formのメソッドを取得して指定する
+        url : $form.attr('action'),
+        type: $form.attr('method'),
         data: $form.serialize()
       })
       .done(function(data) {
