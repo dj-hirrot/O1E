@@ -16,6 +16,7 @@ class TasksController < ApplicationController
     @task = @subject.tasks.build(user_id: current_user.id)
 
     if @task.update(task_params)
+      @subject.update_progress(current_user.id)
       render json: { task: @task }, status: 200
     else
       render json: { task: @task.errors.full_messages }, status: 422
@@ -28,6 +29,7 @@ class TasksController < ApplicationController
 
   def update
     if @task.update(task_params)
+      @subject.update_progress(current_user.id)
       render json: { task: @task }, status: 200
     else
       render json: { task: @task.errors.full_messages }, status: 422
@@ -35,6 +37,7 @@ class TasksController < ApplicationController
   end
 
   def destroy
+    @subject.update_progress(current_user.id)
     @task.destroy
     flash[:success] = 'タスクを削除しました'
     redirect_to category_subject_url(@category.code, @subject)
