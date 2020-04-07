@@ -37,8 +37,8 @@ class TasksController < ApplicationController
   end
 
   def destroy
-    @subject.update_progress(current_user.id)
     @task.destroy
+    @subject.update_progress(current_user.id)
     flash[:success] = 'タスクを削除しました'
     redirect_to category_subject_url(@category.code, @subject)
   end

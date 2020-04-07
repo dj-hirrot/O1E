@@ -4,7 +4,9 @@
     <td><%= subject.description.try(:truncate, 10) %></td>
     <td>
       <div class="progress">
-        <div class="progress-bar w-<%= subject.progress %>" style="width:<%= subject.progress %>%;" role="progressbar" aria-valuenow="<%= subject.progress %>" aria-valuemin="0" aria-valuemax="100"></div>
+        <div class="progress-bar w-<%= subject.progress %>" style="width:<%= subject.progress %>%;" role="progressbar" aria-valuenow="<%= subject.progress %>" aria-valuemin="0" aria-valuemax="100">
+          <%= "#{subject.progress}%" %>
+        </div>
       </div>
     </td>
     <td><%= button_tag '更新', data: { subject_id: subject.id }, class: 'subject_edit_btn btn btn-light', type: 'button' %></td>
