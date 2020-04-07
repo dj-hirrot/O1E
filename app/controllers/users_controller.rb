@@ -1,10 +1,7 @@
 class UsersController < ApplicationController
   before_action :authenticate_user?, only: [:edit, :update]
-  before_action :set_user, only: [:show, :edit, :update]
+  before_action :set_user, only: [:edit, :update]
   before_action :correct_user, only: [:edit, :update]
-
-  def show
-  end
 
   def new
     if signed_in?

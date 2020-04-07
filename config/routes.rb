@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create', as: 'logins'
   delete '/logout', to: 'sessions#destroy', as: 'logout'
 
-  resources :users, only: [:show, :new, :create, :edit, :update], param: :name, as: :user
+  resources :users, only: [:new, :create, :edit, :update], param: :name, as: :user
   get '/join', to: 'users#new', as: 'join'
   post '/join', to: 'users#create', as: 'joins'
 

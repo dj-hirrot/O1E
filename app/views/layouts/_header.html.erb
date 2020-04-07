@@ -15,7 +15,6 @@
               <%= current_user.name.upcase %>
             </a>
             <div class="dropdown-menu" aria-labelledby="navbar-dropdown">
-              <%= link_to 'プロフィール', user_path(current_user.name), class: 'dropdown-item' %>
               <%= link_to '設定', edit_user_path(current_user.name), class: 'dropdown-item' %>
             </div>
           </li>
