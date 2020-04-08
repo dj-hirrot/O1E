@@ -1,4 +1,5 @@
 class Admin::ApplicationController < ActionController::Base
+  http_basic_authenticate_with name: ENV['BASIC_AUTH_USERNAME'], password: ENV['BASIC_AUTH_PASSWORD'] if Rails.env == "staging"
   include Admin::SessionsHelper
   rescue_from ActionController::RoutingError, with: :render_404
 
