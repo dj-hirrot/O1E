@@ -60,7 +60,7 @@ Rails.application.configure do
   # config.active_job.queue_adapter     = :resque
   # config.active_job.queue_name_prefix = "o1e_production"
 
-  app_host = ENV['RUN_ON'] == 'staging' ? 'o1e-staging' : 'o1e'
+  app_host = ENV['RUN_ON'] == 'staging' ? 'o1e-stg' : 'o1e'
 
   config.action_mailer.default_url_options = { :host => "#{app_host}.herokuapp.com" }
   config.action_mailer.perform_caching = false
