@@ -10,7 +10,7 @@
 </p>
 
 # 🍺 App URL
-**PRODUCTION:** https://o1e.herokuapp.com/
+**PRODUCTION:** https://o1e.herokuapp.com/  
 **STAGING:** https://o1e-stg.herokuapp.com/
 
 # 🍺 Features
