@@ -3,7 +3,7 @@
   <td><%= subject.category.name %></td>
   <td><%= subject.user.name %></td>
   <td><%= subject.name %></td>
-  <td><%= subject.description %></td>
+  <td><%= subject.description.truncate(30) %></td>
   <% if superadmin? %>
     <td><%= link_to '編集', edit_admin_subject_path(subject), class: 'btn btn-dark' %></td>
     <td><%= link_to '削除', admin_subject_path(subject), method: :delete, data: { confirm: "#{subject.name}を本当に削除しますか？" }, class: 'btn btn-dark' %></td>
