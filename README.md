@@ -10,7 +10,8 @@
 </p>
 
 # 🍺 App URL
-https://o1e.herokuapp.com/
+**PRODUCTION:** https://o1e.herokuapp.com/
+**STAGING:** https://o1e-stg.herokuapp.com/
 
 # 🍺 Features
 O1E は、興味のある科目を一覧で管理し、習得に必要な項目 (タスク) を科目ごとに登録し、管理することができるアプリです。
