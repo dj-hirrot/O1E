@@ -24,6 +24,6 @@ class Admin::TasksController < Admin::ApplicationController
     end
 
     def task_params
-      params.require(:task).permit(:name, :description)
+      params.require(:task).permit(:name, :description, :done)
     end
 end

@@ -1,0 +1,37 @@
+<div class="container">
+  <h2>「<%= @task.name %>」編集</h2>
+  <%= form_with model: @task, url: admin_task_path(@task), local: true do |f| %>
+    <div class="form-group">
+      <%= f.label :name %>
+      <%= f.text_field :name,
+        class: "form-control #{'is-invalid' if @task.errors.messages[:name].any?}",
+        autofocus: true,
+        autocomplete: "name" %>
+      <% @task.errors.messages[:name].each do |error| %>
+        <div class="invalid-feedback"><%= "タスク名#{error}" %></div>
+      <% end %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :description %>
+      <%= f.text_area :description,
+        class: "form-control limit-height #{'is-invalid' if @task.errors.messages[:description].any?}",
+        autofocus: true %>
+      <% @task.errors.messages[:description].each do |error| %>
+        <div class="invalid-feedback"><%= "説明文#{error}" %></div>
+      <% end %>
+    </div>
+
+    <div class="form-group">
+      <div class="custom-control custom-checkbox">
+        <%= f.check_box :done, class: "custom-control-input", autofocus: true %>
+        <%= f.label :done, class: 'custom-control-label' %>
+      </div>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "更新", class: 'btn btn-dark' %>
+      <%= link_to '戻る', admin_tasks_path, class: 'btn btn-light' %>
+    </div>
+  <% end %>
+</div>
