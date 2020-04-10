@@ -1,5 +1,5 @@
 class Admin::SubjectsController < Admin::ApplicationController
-  before_action :set_subject, only: [:edit, :update]
+  before_action :set_subject, only: [:edit, :update, :destroy]
 
   def index
     @subjects = Subject.all
@@ -16,6 +16,11 @@ class Admin::SubjectsController < Admin::ApplicationController
       flash.now[:danger] = '科目の更新に失敗しました。'
       render :edit
     end
+  end
+
+  def destroy
+    @subject.destroy
+    redirect_to admin_subjects_url, success: 'タスクを削除しました。'
   end
 
   private

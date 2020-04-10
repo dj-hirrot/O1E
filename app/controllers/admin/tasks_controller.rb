@@ -1,5 +1,5 @@
 class Admin::TasksController < Admin::ApplicationController
-  before_action :set_task, only: [:edit, :update]
+  before_action :set_task, only: [:edit, :update, :destroy]
 
   def index
     @tasks = Task.all
@@ -16,6 +16,11 @@ class Admin::TasksController < Admin::ApplicationController
       flash.now[:danger] = 'タスクの更新に失敗しました。'
       render :edit
     end
+  end
+
+  def destroy
+    @task.destroy
+    redirect_to admin_tasks_url, success: 'タスクを削除しました。'
   end
 
   private
