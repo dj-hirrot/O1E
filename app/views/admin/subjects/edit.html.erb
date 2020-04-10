@@ -1,0 +1,30 @@
+<div class="container">
+  <h2>「<%= @subject.name %>」編集</h2>
+  <%= form_with model: @subject, url: admin_subject_path(@subject), local: true do |f| %>
+    <div class="form-group">
+      <%= f.label :name %>
+      <%= f.text_field :name,
+        class: "form-control #{'is-invalid' if @subject.errors.messages[:name].any?}",
+        autofocus: true,
+        autocomplete: "name" %>
+      <% @subject.errors.messages[:name].each do |error| %>
+        <div class="invalid-feedback"><%= "カテゴリ名#{error}" %></div>
+      <% end %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :description %>
+      <%= f.text_area :description,
+        class: "form-control limit-height #{'is-invalid' if @subject.errors.messages[:description].any?}",
+        autofocus: true %>
+      <% @subject.errors.messages[:description].each do |error| %>
+        <div class="invalid-feedback"><%= "説明文#{error}" %></div>
+      <% end %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "更新", class: 'btn btn-dark' %>
+      <%= link_to '戻る', admin_subjects_path, class: 'btn btn-light' %>
+    </div>
+  <% end %>
+</div>
