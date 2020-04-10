@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="jumbotron">
+    <h1>タスク一覧</h1>
+    <p>タスクの一覧。</p>
+  </div>
+
+  <div class="table-responsive">
+    <table class="table text-nowrap table-hover">
+      <thead class="thead-light">
+        <tr>
+          <th>ID</th>
+          <th scope="col">カテゴリ名</th>
+          <th scope="col">ユーザー名</th>
+          <th scope="col">タスク名</th>
+          <th scope="col">説明文</th>
+          <% if superadmin? %>
+            <th></th>
+            <th></th>
+          <% end %>
+        </tr>
+      </thead>
+      <tbody>
+        <%= render @tasks %>
+      </tbody>
+    </table>
+  </div>
+</div>
