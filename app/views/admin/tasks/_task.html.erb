@@ -1,0 +1,11 @@
+<tr>
+  <th scope="row"><%= task.id %></th>
+  <td><%= task.subject.category.name %></td>
+  <td><%= task.user.name %></td>
+  <td><%= task.name %></td>
+  <td><%= task.description.truncate(80) %></td>
+  <% if superadmin? %>
+    <td><%= link_to '編集', edit_admin_task_path(task), class: 'btn btn-dark' %></td>
+    <td><%= link_to '削除', admin_task_path(task), method: :delete, data: { confirm: "#{task.name}を本当に削除しますか？" }, class: 'btn btn-dark' %></td>
+  <% end %>
+</tr>
